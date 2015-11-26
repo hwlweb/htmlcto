@@ -1,0 +1,14 @@
+*.sublime*
+*.DS_*
+node_*
+thumb
+psd
+backup.*
+*.log
+sftp-*
+*.backup
+public/uploads
+database.json
+*.getcandy.*
+getcandy.js
+public/candy-theme-*

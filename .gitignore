@@ -1,0 +1,10 @@
+_Store
+Thumbs.db
+/node_modules/
+*.log
+**/.*
+!.build/
+!.editorconfig
+!.gitignore
+!.npmignore
+!.versions

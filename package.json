@@ -1,0 +1,24 @@
+{
+  "name": "htmlcto",
+  "version": "1.0.0",
+  "description": "前端社区",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwlweb/htmlcto.git"
+  },
+  "author": "hwlweb@163.com @鬼谷子",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwlweb/htmlcto/issues"
+  },
+  "homepage": "https://github.com/hwlweb/htmlcto#readme",
+  "dependencies": {
+    "koa": "~0.14.0",
+    "koa-router": "~3.8.0"
+  }
+}
