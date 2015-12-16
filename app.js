@@ -2,7 +2,10 @@
 /**
  * Dependencies
  */
-const koa = require("koa");
+const express = require('express');
+const dustjs = require('adaro');
+const path = require('path');
+const logger = require('morgan');
 
 /**
  * Config
@@ -12,24 +15,22 @@ const config = require("./config/config");
 /**
  * Server
  */
-const app = koa();
+const app = express();
 app.proxy = true; // trust proxy
-
-/**
- *  Error handler
- */
-const logger = require('koa-logger');
-app.use(logger());
 
 /**
  * Template engine
  */
-const View = require('koa-views');  //模板解析
-const dust = require('dustjs-helpers');
-dust.config.whitespace = true; // 不压缩html代码
-app.use(View('./views', {
-    default: 'dust'
-}));
+// 注册
+app.engine("dust",dustjs.dust({ cache: false }));
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'dust');
+
+/**
+ * logger
+ */
+app.use(logger('dev'));
 
 /**
  * Start app
