@@ -12,8 +12,5 @@ module.exports = function(app) {
                 title: '主页'
             });
         }
-        //res.render('home', {
-        //    title: '主页'
-        //});
     });
 }

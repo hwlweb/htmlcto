@@ -72,6 +72,33 @@ app.use(logger('dev'));
 routes(app);
 auth(app);
 
+//捕获404错误，并转发到错误处理器。
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+//开发环境下的错误处理器，将错误信息渲染error模版并显示到浏览器中。
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+//生产环境下的错误处理器，将错误信息渲染error模版并显示到浏览器中。
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+
 /**
  * Start app
  */

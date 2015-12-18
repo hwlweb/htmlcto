@@ -12,3 +12,4 @@
 ### 1.0.1
     
     - 调通passport-qq,mongo连接，session,session存储
+    - 增加error,404页面
