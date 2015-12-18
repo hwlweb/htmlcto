@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+    <head lang="en">
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>{+title}鬼谷子{/title}</title>
 
+     <script src="/js/lib/jquery-2.1.3.js"></script>
+     <script src="/js/lib/jquery-ui-1.11.3.js"></script>
+     <script src="/js/lib/bootstrap.min.js"></script>
+     <script src="/js/lib/sea.js"></script>
+     {+headscript}{/headscript}
+
+     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+     <link rel="stylesheet" href="/css/lib/bootstrap.min.css">
+     <link rel="stylesheet" href="/css/common.css" />
+     {+stylesheet}{/stylesheet}
+</head>
+
+<body>
+    <!-- header -->
+    {>"/header" /}
+
+    <!-- body -->
+    {+body}{/body}
+
+    <!-- footer -->
+    {+footer}{/footer}
 </body>
+<!--<script src="/js/lib/marked.js"></script>-->
+{+scripts}{/scripts}
 </html>

@@ -1,0 +1,8 @@
+{>"/layout" /}
+
+{<body}
+<a href="/auth/qq">使用 QQ 登录</a>
+{/body}
+{#user}
+    {user.name}<img src="{user.head}" />
+{/user}
