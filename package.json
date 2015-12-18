@@ -32,6 +32,7 @@
     "dustjs-linkedin": "~2.5.*",
     "adaro": "^0.1.5",
     "express-session": "1.9.1",
-    "connect-mongo": "0.8.2"
+    "connect-mongo": "0.8.2",
+    "mongoose": "4.3.2"
   }
 }

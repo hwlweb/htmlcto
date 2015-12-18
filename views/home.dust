@@ -4,5 +4,5 @@
 <a href="/auth/qq">使用 QQ 登录</a>
 {/body}
 {#user}
-    {user.name}<img src="{user.head}" />
+    {user.name}<img src="{user.head}" width="30" height="30"/>
 {/user}

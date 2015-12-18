@@ -12,13 +12,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 /**
- * Config
- */
-const config = require("./config/config");
-const routes = require('./routes/index');
-const auth = require('./routes/auth');
-
-/**
  * Server
  */
 const app = express();
@@ -28,6 +21,7 @@ app.proxy = true; // trust proxy
  * middleware
  */
 app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'htdocs'))); //静态文件目录
 app.use(favicon(__dirname + '/htdocs/img/favicon.ico'));
 
 /**
@@ -69,8 +63,12 @@ app.use(logger('dev'));
 /**
  * routes
  */
+const routes = require('./routes/index');
+const auth = require('./routes/auth');
+const article = require('./routes/article');
 routes(app);
 auth(app);
+article(app);
 
 //捕获404错误，并转发到错误处理器。
 app.use(function(req, res, next) {
