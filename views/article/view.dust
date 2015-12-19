@@ -1,0 +1,3 @@
+{#post}
+    {title} {date} {tag1} {post} <a href="/del/{_id}">del</a> | <a href="/edit/{_id}">edit</a><br/>
+{/post}

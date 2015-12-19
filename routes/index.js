@@ -1,16 +1,6 @@
 "use strict";
+var homeController = require('../controllers/home');
 
 module.exports = function(app) {
-    app.get('/', function(req, res){
-        if(req.session.user != null){
-            res.render('home', {
-                title: '主页',
-                user: req.session.user
-            });
-        }else{
-            res.render('home', {
-                title: '主页'
-            });
-        }
-    });
+    app.get('/', homeController.home);
 }

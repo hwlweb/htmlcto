@@ -1,14 +1,44 @@
 {>"./layout" /}
 
 {<body}
-    <h2>发布</h2>
-    <form method="post">
-        标题：<br />
-        <input type="text" name="title" /><br />
-        标签：<br />
-        <input type="text" name="tag1" /><input type="text" name="tag2" /><input type="text" name="tag3" /><br />
-        正文：<br />
-        <textarea name="post" rows="20" cols="100"></textarea><br />
-        <input type="submit" value="发表" />
-    </form>
+{#post}
+<div class="bs-example">
+    <div class="container">
+        <form action="/update/{_id}" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label for="title" class="col-lg-4 control-label">标题</label>
+                <div class="col-lg-30">
+                    <input class="form-control" id="title" type="text" name="title" placeholder="输入标题" value="{title}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="post" class="col-lg-4 control-label">正文</label>
+                <div class="col-lg-56">
+                    <textarea name="post" rows="20" cols="100" class="form-control" placeholder="使用Markdown语法">{post}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tag1" class="col-lg-4 control-label">标签</label>
+                <div class="col-lg-30">
+                    <input class="form-control" id="tag1" type="text" name="tag1" value="{tag1}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cate" class="col-lg-4 control-label">发表到</label>
+                <div class="col-lg-30">
+                    <select id="select-group-or-team" name="cate" class="form-control" placeholder="选择类目">
+                        <option value="0">&nbsp;</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-56 col-sm-offset-4">
+                <small><font color="#999999">未选择，默认发布到我的主页；选择后也会同步到我的主页。</font></small>
+            </div>
+            <div class="col-sm-56 col-sm-offset-4">
+                <input type="submit" value="发表" class="btn btn-primary publish-btn"/>
+            </div>
+        </form>
+    </div>
+</div>
+{/post}
 {/body}

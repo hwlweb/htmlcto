@@ -10,7 +10,7 @@ const logger = require('morgan');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-
+const bodyParser = require('body-parser');
 /**
  * Server
  */
@@ -23,7 +23,7 @@ app.proxy = true; // trust proxy
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'htdocs'))); //静态文件目录
 app.use(favicon(__dirname + '/htdocs/img/favicon.ico'));
-
+app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * auth
  */

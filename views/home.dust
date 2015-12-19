@@ -1,8 +1,30 @@
 {>"/layout" /}
 
 {<body}
-<a href="/auth/qq">使用 QQ 登录</a>
+
+<div class="jum">
+    <div class="container">
+        <h2 class="main-title">项目合作</h2>
+        <p class="content-home">如果你有不错的项目，急需一个靠谱的前端参与；如果你的项目因前端资源匮乏，导致项目不能顺利开展；如果你的项目急于上线，急需大量前端资源的投入；</p>
+        <p class="content-home">那么你可以考虑一下我，在这里，你可以得到一套完整的解决方案；与我合作，意味着您的项目前端部分将得到尽可能佳的保障。</p>
+        <p class="content-home">彪悍的前端不需要解释！</p>
+        <p><a class="btn btn-danger" href="/profile" role="button">了解我</a> <a class="btn btn-info" href="/auth/qq" role="button">使用QQ帐号登入</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="label label-success">全部精华</span> {#user}<a href="/post" class="edit-btn navbar-right"><span class="label label-danger">写文章</span></a>{/user}</div>
+        <table class="table">
+            <tbody>
+                {#list}
+                <tr>
+                    <td><img src="{head}" width="30" height="30" /><a href="/view/{_id}" class="article-title">{title}</a><span class="badge">42</span></td>
+                    <td class="col-tag"><span class="label label-info">{tag1}</span></td>
+                    <td class="col-date">{date}</td>
+                </tr>
+                {/list}
+            </tbody>
+        </table>
+    </div>
+</div>
 {/body}
-{#user}
-    {user.name}<img src="{user.head}" width="30" height="30"/>
-{/user}
