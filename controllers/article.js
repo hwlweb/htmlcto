@@ -3,16 +3,20 @@ var co = require('co');
 var tools = require('../common/tools');
 var ObjectId = require('mongodb').ObjectID;
 var ArticleModel = require('../models').ArticleModel;
+var marked = require('marked');
 
 module.exports = {
     view: function(req, res){
-        res.render('./article/post');
+        res.render('./article/post',{
+            user: req.session.user
+        });
     },
     post: function(req, res) {
         var posts = req.body;
         posts.date = new Date();
         posts.uid = req.session.user.uid;
         posts.head = req.session.user.head;
+        posts.name = req.session.user.name;
 
         co(function *(){
             yield ArticleModel.create(posts);
@@ -24,7 +28,8 @@ module.exports = {
         co(function *(){
             var post = yield ArticleModel.findOne({_id: id}).exec();
             yield res.render('./article/edit',{
-                post: post
+                post: post,
+                user: req.session.user
             });
         });
     },
@@ -33,8 +38,10 @@ module.exports = {
         co(function *(){
             var post = yield ArticleModel.findOne({_id: id}).exec();
             post.date = tools.formatDate(post.date, true);
+            post.post = marked(post.post);
             yield res.render('./article/view',{
-                post: post
+                post: post,
+                user: req.session.user
             });
         });
     },
@@ -59,7 +66,7 @@ module.exports = {
                 }
             }).exec();
 
-            yield res.redirect('/');
+            yield res.redirect('/view/' + id);
         });
     }
 }

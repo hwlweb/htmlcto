@@ -1,3 +1,22 @@
+{>"./layout" /}
+
+{<body}
+<div class="container">
 {#post}
-    {title} {date} {tag1} {post} <a href="/del/{_id}">del</a> | <a href="/edit/{_id}">edit</a><br/>
+<div class="page-header">
+  <h1><span class="glyphicon glyphicon-apple"></span> {title} </h1>
+  <div class="changes clearfix">
+     <img src="{head}" width="30" height="30" />&nbsp;{name}&nbsp;发布于{date}&nbsp;65342 次浏览&nbsp;
+     <span class="label label-default small-font">{tag1}</span>
+     {#user}
+     <div class="navbar-right small-font">
+        <a href="/del/{_id}" class="label label-danger">删除</a>&nbsp;
+        <a href="/edit/{_id}" class="label label-danger">编辑</a>
+     </div>
+     {/user}
+  </div>
+</div>
+<div>{post|s}</div>
 {/post}
+</div>
+{/body}

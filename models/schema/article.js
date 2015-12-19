@@ -9,7 +9,8 @@ var ArticleSchema = new Schema({
     date  : { type:String},
     tag1  : { type:String},
     uid   : { type:String},
-    head  : { type:String}
+    head  : { type:String},
+    name  : { type:String}
 });
 
 mongoose.model('Article', ArticleSchema);
