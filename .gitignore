@@ -1,6 +1,7 @@
 _Store
 Thumbs.db
 /node_modules/
+/htdocs/img/uploads/
 *.log
 **/.*
 !.build/
