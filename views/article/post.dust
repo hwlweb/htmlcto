@@ -14,17 +14,14 @@
                 <label for="post" class="col-lg-4 control-label">正文</label>
                 <div class="col-lg-56">
                     <textarea name="post" rows="20" cols="100" class="form-control" placeholder="使用Markdown语法"></textarea>
-                </div>
-            </div>
-            <div class="col-sm-56 col-sm-offset-4">
-                <div class="form-group">
-                    <a title="上传" href="/upload" class="btn btn-link" data-toggle="modal" data-target="#uploadfile">上传图片</a>
+                    <p class="help-block"><a title="上传" href="/upload" class="btn btn-link" data-toggle="modal" data-target="#uploadfile">上传图片</a></p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="tag1" class="col-lg-4 control-label">标签</label>
                 <div class="col-lg-30">
                     <input class="form-control" id="tag1" type="text" name="tag1">
+                    <p class="help-block">多个标签，以逗号隔开。</p>
                 </div>
             </div>
             <div class="form-group">
@@ -33,10 +30,8 @@
                     <select id="select-group-or-team" name="cate" class="form-control" placeholder="选择类目">
                         <option value="0">&nbsp;</option>
                     </select>
+                    <p class="help-block">未选择，默认发布到我的主页；选择后也会同步到我的主页。</p>
                 </div>
-            </div>
-            <div class="col-sm-56 col-sm-offset-4">
-                <small><font color="#999999">未选择，默认发布到我的主页；选择后也会同步到我的主页。</font></small>
             </div>
             <div class="col-sm-56 col-sm-offset-4">
                 <input type="submit" value="发表" class="btn btn-primary publish-btn"/>

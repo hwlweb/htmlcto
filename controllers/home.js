@@ -6,7 +6,7 @@ var ArticleModel = require('../models').ArticleModel;
 module.exports = {
     home: function(req, res){
         co(function *(){
-            var list = yield ArticleModel.find().limit(25).sort({date:-1});
+            var list = yield ArticleModel.find().limit(25).sort({date: -1});
             for(var i = 0; i < list.length; i++){
                 list[i].date = tools.formatDate(list[i].date, true);
             }

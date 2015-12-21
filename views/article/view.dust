@@ -7,7 +7,7 @@
   <h1><span class="glyphicon glyphicon-apple"></span> {title} </h1>
   <div class="changes clearfix">
      <img src="{head}" width="30" height="30" />&nbsp;{name}&nbsp;发布于{date}&nbsp;65342 次浏览&nbsp;
-     <span class="label label-default small-font">{tag1}</span>
+     {#tag1}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag1}
      {#user}
      <div class="navbar-right small-font">
         <a href="/del/{_id}" class="label label-danger">删除</a>&nbsp;

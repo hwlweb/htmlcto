@@ -15,8 +15,10 @@ mongoose.connect(db, function(err){
 
 require('./schema/article');
 require('./schema/user');
+require('./schema/tags');
 
 module.exports = {
     ArticleModel: mongoose.model('Article'),
-    UserModel: mongoose.model('User')
+    UserModel: mongoose.model('User'),
+    TagsModel: mongoose.model('Tags')
 }

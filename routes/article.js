@@ -9,4 +9,5 @@ module.exports = function(app) {
     app.get('/del/:id', articleController.del);
     app.post('/update/:id', articleController.update);
     app.post('/upload', articleController.upload);
+    app.get('/tags/:tag', articleController.tags);
 }
