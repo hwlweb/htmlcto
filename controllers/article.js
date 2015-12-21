@@ -68,5 +68,8 @@ module.exports = {
 
             yield res.redirect('/view/' + id);
         });
+    },
+    upload: function(req, res){
+        res.redirect('/post');
     }
 }

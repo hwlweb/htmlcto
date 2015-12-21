@@ -8,4 +8,5 @@ module.exports = function(app) {
     app.get('/edit/:id', articleController.edit);
     app.get('/del/:id', articleController.del);
     app.post('/update/:id', articleController.update);
+    app.post('/upload', articleController.upload);
 }

@@ -24,6 +24,18 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'htdocs'))); //静态文件目录
 app.use(favicon(__dirname + '/htdocs/img/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+/**
+ * uploads
+ */
+var multer  = require('multer');
+app.use(multer({
+    dest: './htdocs/img/uploads',
+    rename: function (fieldname, filename) {
+        return filename;
+    }
+}));
+
 /**
  * auth
  */
