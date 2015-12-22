@@ -1,5 +1,9 @@
 {>"./layout" /}
 
+{<stylesheet}
+    <link rel="stylesheet" href="/css/lib/highlight_monokai.min.css" />
+{/stylesheet}
+
 {<body}
 <div class="container">
 {#post}
@@ -16,7 +20,16 @@
      {/user}
   </div>
 </div>
-<div>{post|s}</div>
+<div id="content-box" class="entry-content">{post|s}</div>
 {/post}
 </div>
 {/body}
+
+{<scripts}
+    <script src="/js/lib/highlight.min.js"></script>
+    <script>
+        seajs.use('/js/post.js', function(post){
+            post.init();
+        });
+    </script>
+{/scripts}

@@ -10,7 +10,7 @@ module.exports = {
             var limit = 25;
             var page = parseInt(req.query.p) || 1;
             var skip = (page - 1) * limit;
-
+            var pageNum = Math.floor(total/limit) > 1 ? Math.floor(total/limit) : 1;
             var list = yield ArticleModel.find().skip( skip ).limit( limit ).sort({date: -1});
             for(var i = 0; i < list.length; i++){
                 list[i].date = tools.formatDate(list[i].date, true);
@@ -22,7 +22,7 @@ module.exports = {
                     list: list,
                     page: function(){
                         var pageList = [];
-                        for(i = 1 ; i <= total; i++){
+                        for(i = 1 ; i <= pageNum; i++){
                             pageList.push(i);
                         }
                         return pageList;
