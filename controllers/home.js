@@ -37,7 +37,7 @@ module.exports = {
                         return page > 1 ? page - 1 : 1;
                     },
                     next: function(){
-                        return page < total ? page + 1 : total;
+                        return page < pageNum ? page + 1 : pageNum;
                     }
                 });
             }
