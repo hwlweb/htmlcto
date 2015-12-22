@@ -13,7 +13,7 @@
 </div>
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading"><span class="label label-success">全部精华</span> {#user}<a href="/post" class="edit-btn navbar-right"><span class="label label-danger">写文章</span></a>{/user}</div>
+        <div class="panel-heading"><span class="label label-success">全部精华</span> {#user}<a href="/post" class="edit-btn navbar-right"><span class="label label-danger"><span class="glyphicon glyphicon-edit"></span> 写文章</span></a>{/user}</div>
         <table class="table">
             <tbody>
                 {#list}
