@@ -16,7 +16,7 @@
      {+stylesheet}{/stylesheet}
 </head>
 
-<body>
+<body class="body-bg">
     <!-- header -->
     {>"/header" /}
 

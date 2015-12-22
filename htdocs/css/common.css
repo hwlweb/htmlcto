@@ -1,3 +1,6 @@
+#top{background: #fff;}
+.body-bg{background: #fff;}
+.c-top{margin-top: 20px;}
 .jum{background: #00b6ae url('../img/bg-square.png'); padding: 20px 0 30px 0; margin-bottom: 20px; text-align: center;}
 .main-title{text-shadow: 0 1px 0 rgba(0,0,0,0.2);  font-size: 36px;  font-weight: bold;  color: white;}
 .content-home {  text-shadow: 0 1px 0 rgba(0,0,0,0.2);  font-size: 16px;  color: white; }
