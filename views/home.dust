@@ -25,6 +25,13 @@
                 {/list}
             </tbody>
         </table>
+        <div class="panel-footer">
+            {>"/pagination" /}
+        </div>
     </div>
 </div>
 {/body}
+
+{<scripts}
+    <script src="/js/pagination.js"></script>
+{/scripts}

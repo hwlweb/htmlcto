@@ -1,0 +1,19 @@
+<nav>
+    <ul class="pagination pagination-sm">
+        {@ne key=isFirstPage value=true}
+        <li>
+            <a href="?p={prev}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {/ne}
+        {#page}<li data-page={.}><a href="?p={.}">{.}</a></li>{/page}
+        {@ne key=isLastPage value=true}
+        <li>
+            <a href="?p={next}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {/ne}
+    </ul>
+</nav>

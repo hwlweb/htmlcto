@@ -116,11 +116,6 @@ module.exports = {
                         list: tagList,
                         tagName: tagName
                     });
-                }else{
-                    res.render('./article/tags', {
-                        list: tagList,
-                        tagName: tagName
-                    });
                 }
             });
         });
