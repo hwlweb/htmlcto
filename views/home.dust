@@ -8,7 +8,9 @@
         <p class="content-home">如果你有不错的项目，急需一个靠谱的前端参与；如果你的项目因前端资源匮乏，导致项目不能顺利开展；如果你的项目急于上线，急需大量前端资源的投入；</p>
         <p class="content-home">那么你可以考虑一下我，在这里，你可以得到一套完整的解决方案；与我合作，意味着您的项目前端部分将得到尽可能佳的保障。</p>
         <p class="content-home">彪悍的前端不需要解释！</p>
-        <p><a class="btn btn-danger" href="/profile" role="button">了解我</a> <a class="btn btn-info" href="/auth/qq" role="button">使用QQ帐号登入</a></p>
+        <p>
+            <a class="btn btn-danger" href="/profile" role="button"><i class="glyphicon glyphicon-heart"></i> 了解我</a>
+            <a class="btn btn-info auth-qq" href="/auth/qq" role="button"><i class="glyphicon glyphicon-log-in"></i> 使用QQ帐号登入</a></p>
     </div>
 </div>
 <div class="container">
