@@ -20,11 +20,13 @@
 .small-font{font-size: 12px;}
 .changes{color: #838383; font-size: 12px;}
 .navbar-nav>li>a, .navbar-nav>li>a:hover, .navbar-brand, .navbar-brand:hover{color:#fff; text-shadow: 0 1px 0 rgba(0,0,0,0.2);}
+.navbar-brand{font-size: 20px;}
 .nav>li>a:hover, .nav>li>a:focus{background: none; color:#f2f2f2;}
 .help-block{margin-bottom: 0;}
 .label-e{display: inline-block; margin-left: 3px;}
 .pagination{margin: 5px 0 0 0;}
 .auth-qq{margin-left: 10px;}
+.comment{margin-top: 40px;}
 
 /* highlight 代码高亮 */
 pre {
@@ -72,3 +74,5 @@ code.has-numbering {
     line-height: 19px;
     display: list-item;
 }
+
+#comments .cm-s-paper{height: 160px;}

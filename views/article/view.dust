@@ -21,6 +21,13 @@
   </div>
 </div>
 <div id="content-box" class="entry-content">{post|s}</div>
+
+{#user}
+<div id="comments" class="comment">
+    {>"/comments" /}
+</div>
+{/user}
+
 {/post}
 </div>
 {/body}

@@ -23,5 +23,8 @@ define(function(require, exports) {
 
     exports.init = function(){
         highlight('#content-box pre code');
+
+        var editor = new Editor();
+        editor.render($('#comment-area')[0]);
     }
 });

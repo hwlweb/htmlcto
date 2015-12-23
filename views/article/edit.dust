@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="post" class="col-lg-4 control-label">正文</label>
                 <div class="col-lg-56">
-                    <textarea name="post" rows="20" cols="100" class="form-control" placeholder="使用Markdown语法">{post}</textarea>
+                    <textarea name="post" rows="20" cols="100" class="form-control" placeholder="使用Markdown语法" id="comment-area">{post}</textarea>
                     <p class="help-block"><a title="上传" href="/upload" class="btn btn-link" data-toggle="modal" data-target="#uploadfile"><span class="glyphicon glyphicon-paperclip"></span>上传图片</a></p>
                 </div>
             </div>
@@ -62,3 +62,12 @@
 </div>
 {/post}
 {/body}
+
+{<scripts}
+    <script>
+        (function(){
+            var editor = new Editor();
+            editor.render($('#comment-area')[0]);
+        })();
+    </script>
+{/scripts}
