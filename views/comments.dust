@@ -3,7 +3,8 @@
     <div class="panel-body">
         <form action="/comment" method="post">
            <div class="form-group">
-               <textarea class="form-control eidter-wrap" rows="3" id="comment-area"></textarea>
+               <input type="hidden" name="post_id" value="{post_id}" />
+               <textarea class="form-control eidter-wrap" rows="3" id="comment-area" name="comment"></textarea>
            </div>
            <div class="text-right">
                 <button type="submit" class="btn btn-info"/>回复</button>

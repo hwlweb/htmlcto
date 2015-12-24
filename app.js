@@ -78,9 +78,11 @@ app.use(logger('dev'));
 const routes = require('./routes/index');
 const auth = require('./routes/auth');
 const article = require('./routes/article');
+const comment = require('./routes/comments');
 routes(app);
 auth(app);
 article(app);
+comment(app);
 
 //捕获404错误，并转发到错误处理器。
 app.use(function(req, res, next) {

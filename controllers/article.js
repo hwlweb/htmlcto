@@ -4,6 +4,7 @@ var tools = require('../common/tools');
 var ObjectId = require('mongodb').ObjectID;
 var ArticleModel = require('../models').ArticleModel;
 var TagsModel = require('../models').TagsModel;
+var CommentModel = require('../models').CommentsModel;
 var marked = require('marked');
 
 module.exports = {
@@ -51,8 +52,17 @@ module.exports = {
             post.date = tools.formatDate(post.date, true);
             post.post = marked(post.post);
 
+            var comments = yield CommentModel.find({post_id: id}).exec();
+            comments.forEach(function(comment){
+                comment.date = tools.formatDate(comment.date, true);
+                comment.comment = marked(comment.comment);
+            });
+
             yield res.render('./article/view',{
                 post: post,
+                comments: comments,
+                len: comments.length,
+                post_id: id,
                 user: req.session.user
             });
         });

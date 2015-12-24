@@ -21,6 +21,22 @@
   </div>
 </div>
 <div id="content-box" class="entry-content">{post|s}</div>
+{/post}
+
+{@gt key=len value=0}
+<div class="panel panel-default">
+    <div class="panel-heading">{len} 条回复</div>
+    <div class="panel-body">
+        {#comments}
+        {~n}
+        <div class="cell" id={_id}>
+            <a href="/profile/{uid}" class="head"><img src="{head}" width="30" height="30" />{name}</a><span class="comment-date">{$idx}楼 {date}</span>
+            <div class="comment-con">{comment|s}</div>
+        </div>
+        {/comments}
+    </div>
+</div>
+{/gt}
 
 {#user}
 <div id="comments" class="comment">
@@ -28,7 +44,6 @@
 </div>
 {/user}
 
-{/post}
 </div>
 {/body}
 

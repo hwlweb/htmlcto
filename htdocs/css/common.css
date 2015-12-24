@@ -76,3 +76,9 @@ code.has-numbering {
 }
 
 #comments .cm-s-paper{height: 160px;}
+.cell{border-bottom: 1px solid #ece9e9; padding: 10px 0;}
+.cell:last-child{border-bottom: 0;}
+.comment-con{padding-left: 40px; font-size: 15px;}
+.head{font-size: 12px; color:#333;}
+.head img{margin-right: 10px;}
+.comment-date{color: #08c; font-size: 12px; display: inline-block; margin-left: 10px;}

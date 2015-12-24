@@ -16,9 +16,11 @@ mongoose.connect(db, function(err){
 require('./schema/article');
 require('./schema/user');
 require('./schema/tags');
+require('./schema/comments');
 
 module.exports = {
     ArticleModel: mongoose.model('Article'),
     UserModel: mongoose.model('User'),
-    TagsModel: mongoose.model('Tags')
+    TagsModel: mongoose.model('Tags'),
+    CommentsModel: mongoose.model('Comments')
 }
