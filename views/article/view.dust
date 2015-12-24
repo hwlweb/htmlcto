@@ -31,6 +31,7 @@
         {~n}
         <div class="cell" id={_id}>
             <a href="/profile/{uid}" class="head"><img src="{head}" width="30" height="30" />{name}</a><span class="comment-date">{$idx}楼 {date}</span>
+            <!--<div class="navbar-right"><a class="glyphicon glyphicon-trash" href="javascript:;"></a><a class="glyphicon glyphicon-comment" href="javascript:;"></a></div>-->
             <div class="comment-con">{comment|s}</div>
         </div>
         {/comments}
