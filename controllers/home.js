@@ -15,32 +15,30 @@ module.exports = {
             for(var i = 0; i < list.length; i++){
                 list[i].date = tools.formatDate(list[i].date, true);
             }
-            if(req.session.user != null){
-                yield res.render('home', {
-                    title: '主页',
-                    user: req.session.user,
-                    list: list,
-                    page: function(){
-                        var pageList = [];
-                        for(i = 1 ; i <= pageNum; i++){
-                            pageList.push(i);
-                        }
-                        return pageList;
-                    },
-                    isFirstPage: function(){
-                        return page - 1 == 0 ? true : false;
-                    },
-                    isLastPage: function(){
-                        return ((page - 1) * 10 + list.length) == total ? true : false;
-                    },
-                    prev: function(){
-                        return page > 1 ? page - 1 : 1;
-                    },
-                    next: function(){
-                        return page < pageNum ? page + 1 : pageNum;
+            yield res.render('home', {
+                title: '主页',
+                user: req.session.user || null,
+                list: list,
+                page: function(){
+                    var pageList = [];
+                    for(i = 1 ; i <= pageNum; i++){
+                        pageList.push(i);
                     }
-                });
-            }
+                    return pageList;
+                },
+                isFirstPage: function(){
+                    return page - 1 == 0 ? true : false;
+                },
+                isLastPage: function(){
+                    return ((page - 1) * 10 + list.length) == total ? true : false;
+                },
+                prev: function(){
+                    return page > 1 ? page - 1 : 1;
+                },
+                next: function(){
+                    return page < pageNum ? page + 1 : pageNum;
+                }
+            });
         });
     }
 }
