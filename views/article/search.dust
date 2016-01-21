@@ -9,7 +9,7 @@
         {#list}
         <tr>
             <td><img src="{head}" width="30" height="30" /><a href="/view/{_id}" class="article-title">{title}</a><span class="badge">{pv}</span></td>
-            <td class="col-tag">{#tag1}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag1}</td>
+            <td class="col-tag">{#tag}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag}</td>
             <td class="col-date">{date}</td>
         </tr>
         {/list}

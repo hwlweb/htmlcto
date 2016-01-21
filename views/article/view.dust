@@ -11,7 +11,7 @@
   <h1><span class="glyphicon glyphicon-education"></span> {title} </h1>
   <div class="changes clearfix">
      <img src="{head}" width="30" height="30" />&nbsp;{name}&nbsp;发布于{date}&nbsp;{pv} 次浏览&nbsp;
-     {#tag1}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag1}
+     {#tag}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag}
      {#user}
      <div class="navbar-right small-font">
         <a href="/del/{_id}" class="label label-danger"><span class="glyphicon glyphicon-remove"></span> 删除</a>&nbsp;

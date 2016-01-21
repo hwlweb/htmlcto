@@ -10,7 +10,7 @@ var marked = require('marked');
 module.exports = {
     view: function(req, res){
         res.render('./article/post',{
-            user: req.session.user
+            user: req.session.user || null
         });
     },
     post: function(req, res) {
@@ -21,7 +21,6 @@ module.exports = {
         posts.name = req.session.user.name;
 
         var tags = posts.tag1.split(',');
-        posts.tag1 = tags;
 
         posts.pv = 0;
 
@@ -53,12 +52,14 @@ module.exports = {
             var post = yield ArticleModel.findOne({_id: id}).exec();
             post.date = tools.formatDate(post.date, true);
             post.post = marked(post.post);
-
+            post.tag = post.tag1.split(',');
+            //变更pv
             var comments = yield CommentModel.find({post_id: id}, function(){
                 ArticleModel.findByIdAndUpdate({_id: id}, {
                     $inc: {pv: 1}
                 }).exec();
             }).exec();
+
             comments.forEach(function(comment){
                 comment.date = tools.formatDate(comment.date, true);
                 comment.comment = marked(comment.comment);
@@ -112,24 +113,20 @@ module.exports = {
     },
     tags: function(req, res){
         var tagName = req.params.tag;
-        var tagList = [];
+        var pattern = new RegExp(tagName, "i");
         co(function *(){
-            yield ArticleModel.find({},function(err, list){
-                list.forEach(function(items){
-                    var tag = items.tag1;
-                    if(tag.indexOf(tagName) != -1){
-                        tagList.push(items);
-                    }
-                });
-
-                for(var i = 0; i < tagList.length; i++){
-                    tagList[i].date = tools.formatDate(tagList[i].date, true);
+            yield ArticleModel.find({
+                tag1: pattern
+            },function(err, list){
+                for(var i = 0; i < list.length; i++){
+                    list[i].date = tools.formatDate(list[i].date, true);
+                    list[i].tag = list[i].tag1.split(',');
                 }
 
                 if(req.session.user != null){
                     res.render('./article/tags', {
                         user: req.session.user,
-                        list: tagList,
+                        list: list,
                         tagName: tagName
                     });
                 }
@@ -139,12 +136,14 @@ module.exports = {
     search: function(req, res){
         var keywords = req.query.keyword;
         var pattern = new RegExp(keywords, "i");
+
         co(function *(){
             yield ArticleModel.find({
                 title: pattern
             },function(err, list){
                 for(var i = 0; i < list.length; i++){
                     list[i].date = tools.formatDate(list[i].date, true);
+                    list[i].tag = list[i].tag1.split(',');
                 }
 
                 res.render('./article/search', {
