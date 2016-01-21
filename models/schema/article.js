@@ -11,7 +11,9 @@ var ArticleSchema = new Schema({
     uid   : { type:String},
     head  : { type:String},
     name  : { type:String},
+    cate  : { type:String},
     pv    : { type:Number}
+
 });
 
 mongoose.model('Article', ArticleSchema);

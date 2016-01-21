@@ -6,11 +6,13 @@ var ArticleModel = require('../models').ArticleModel;
 var TagsModel = require('../models').TagsModel;
 var CommentModel = require('../models').CommentsModel;
 var marked = require('marked');
+var Categories = require('../config/categories');
 
 module.exports = {
     view: function(req, res){
         res.render('./article/post',{
-            user: req.session.user || null
+            user: req.session.user || null,
+            categories: Categories
         });
     },
     post: function(req, res) {
@@ -42,7 +44,8 @@ module.exports = {
             var post = yield ArticleModel.findOne({_id: id}).exec();
             yield res.render('./article/edit',{
                 post: post,
-                user: req.session.user
+                user: req.session.user || null,
+                categories: Categories
             });
         });
     },
@@ -70,7 +73,8 @@ module.exports = {
                 comments: comments,
                 len: comments.length,
                 post_id: id,
-                user: req.session.user
+                user: req.session.user || null,
+                categories: Categories
             });
         });
     },
@@ -101,7 +105,8 @@ module.exports = {
                     title: posts.title,
                     tag1: posts.tag1,
                     post: posts.post,
-                    date: new Date()
+                    date: new Date(),
+                    cate: posts.cate
                 }
             }).exec();
 
@@ -123,13 +128,12 @@ module.exports = {
                     list[i].tag = list[i].tag1.split(',');
                 }
 
-                if(req.session.user != null){
-                    res.render('./article/tags', {
-                        user: req.session.user,
-                        list: list,
-                        tagName: tagName
-                    });
-                }
+                res.render('./article/tags', {
+                    user: req.session.user || null,
+                    list: list,
+                    tagName: tagName,
+                    categories: Categories
+                });
             });
         });
     },
@@ -149,7 +153,54 @@ module.exports = {
                 res.render('./article/search', {
                     user: req.session.user || null,
                     list: list,
-                    keywords: keywords
+                    keywords: keywords,
+                    categories: Categories
+                });
+            });
+        });
+    },
+    categories: function(req, res){
+        var cateName = req.params.cate;
+        var pattern = new RegExp(cateName, "i");
+
+        co(function *(){
+            yield ArticleModel.find({
+                cate: pattern
+            },function(err, list){
+                var total = list.length; //总条数
+                var limit = 25;
+                var page = parseInt(req.query.p) || 1;
+                var skip = (page - 1) * limit;
+                var pageNum = Math.floor(total/limit) > 1 ? Math.floor(total/limit) : 1;
+
+                for(var i = 0; i < list.length; i++){
+                    list[i].date = tools.formatDate(list[i].date, true);
+                    list[i].tag = list[i].tag1.split(',');
+                }
+
+                res.render('./home', {
+                    user: req.session.user || null,
+                    list: list,
+                    categories: Categories,
+                    page: function(){
+                        var pageList = [];
+                        for(i = 1 ; i <= pageNum; i++){
+                            pageList.push(i);
+                        }
+                        return pageList;
+                    },
+                    isFirstPage: function(){
+                        return page - 1 == 0 ? true : false;
+                    },
+                    isLastPage: function(){
+                        return ((page - 1) * 10 + list.length) == total ? true : false;
+                    },
+                    prev: function(){
+                        return page > 1 ? page - 1 : 1;
+                    },
+                    next: function(){
+                        return page < pageNum ? page + 1 : pageNum;
+                    }
                 });
             });
         });

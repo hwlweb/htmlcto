@@ -11,4 +11,5 @@ module.exports = function(app) {
     app.post('/upload', articleController.upload);
     app.get('/tags/:tag', articleController.tags);
     app.get('/search', articleController.search);
+    app.get('/cate/:cate', articleController.categories);
 }

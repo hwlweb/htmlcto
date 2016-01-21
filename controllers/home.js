@@ -2,6 +2,7 @@
 var co = require('co');
 var tools = require('../common/tools');
 var ArticleModel = require('../models').ArticleModel;
+var Categories = require('../config/categories');
 
 module.exports = {
     home: function(req, res){
@@ -21,6 +22,7 @@ module.exports = {
                 title: '主页',
                 user: req.session.user || null,
                 list: list,
+                categories: Categories,
                 page: function(){
                     var pageList = [];
                     for(i = 1 ; i <= pageNum; i++){

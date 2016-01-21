@@ -29,6 +29,9 @@
                 <div class="col-lg-30">
                     <select id="select-group-or-team" name="cate" class="form-control" placeholder="选择类目">
                         <option value="0">&nbsp;</option>
+                        {#categories}
+                        <option value="{name}">{name}</option>
+                        {/categories}
                     </select>
                     <p class="help-block">未选择，默认发布到我的主页；选择后也会同步到我的主页。</p>
                 </div>
