@@ -24,6 +24,11 @@
                     <a href="/">大杂烩</a>
                 </li>
             </ul>
+            <div class="navbar-search">
+                <form action="/search" method="GET">
+                    <input type="text" name="keyword" placeholder="站内搜索" class="form-control search" />
+                </form>
+            </div>
             <ul class="navbar-nav navbar-right">
             {#user}
                 <li><span class="profile">{user.name}</span> <img src="{user.head}" width="30" height="30" class="face"/><a href="/logout" class="login-out">登出</a></li>

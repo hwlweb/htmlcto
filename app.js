@@ -71,6 +71,16 @@ app.set('view engine', 'dust');
  * logger
  */
 app.use(logger('dev'));
+// 当有错误发生时，就将错误信息保存到了根目录下的 error.log 文件夹里。
+app.use(logger({stream: accessLog}));
+var fs = require('fs');
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
+app.use(function (err, req, res, next) {
+    var meta = '[' + new Date() + '] ' + req.url + '\n';
+    errorLog.write(meta + err.stack + '\n');
+    next();
+});
 
 /**
  * routes
@@ -86,9 +96,8 @@ comment(app);
 
 //捕获404错误，并转发到错误处理器。
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+    res.statusCode = "404";
+    res.render('404');
 });
 
 //开发环境下的错误处理器，将错误信息渲染error模版并显示到浏览器中。

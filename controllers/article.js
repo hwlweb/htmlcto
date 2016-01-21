@@ -23,6 +23,8 @@ module.exports = {
         var tags = posts.tag1.split(',');
         posts.tag1 = tags;
 
+        posts.pv = 0;
+
         co(function *(){
             for(var i = 0; i < tags.length; i++){
                 yield TagsModel.findOne({tag: tags[i]}, function(err, tag){
@@ -52,7 +54,11 @@ module.exports = {
             post.date = tools.formatDate(post.date, true);
             post.post = marked(post.post);
 
-            var comments = yield CommentModel.find({post_id: id}).exec();
+            var comments = yield CommentModel.find({post_id: id}, function(){
+                ArticleModel.findByIdAndUpdate({_id: id}, {
+                    $inc: {pv: 1}
+                }).exec();
+            }).exec();
             comments.forEach(function(comment){
                 comment.date = tools.formatDate(comment.date, true);
                 comment.comment = marked(comment.comment);
@@ -127,6 +133,25 @@ module.exports = {
                         tagName: tagName
                     });
                 }
+            });
+        });
+    },
+    search: function(req, res){
+        var keywords = req.query.keyword;
+        var pattern = new RegExp(keywords, "i");
+        co(function *(){
+            yield ArticleModel.find({
+                title: pattern
+            },function(err, list){
+                for(var i = 0; i < list.length; i++){
+                    list[i].date = tools.formatDate(list[i].date, true);
+                }
+
+                res.render('./article/search', {
+                    user: req.session.user || null,
+                    list: list,
+                    keywords: keywords
+                });
             });
         });
     }

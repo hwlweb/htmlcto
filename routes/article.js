@@ -10,4 +10,5 @@ module.exports = function(app) {
     app.post('/update/:id', articleController.update);
     app.post('/upload', articleController.upload);
     app.get('/tags/:tag', articleController.tags);
+    app.get('/search', articleController.search);
 }

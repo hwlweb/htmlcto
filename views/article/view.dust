@@ -10,7 +10,7 @@
 <div class="page-header">
   <h1><span class="glyphicon glyphicon-education"></span> {title} </h1>
   <div class="changes clearfix">
-     <img src="{head}" width="30" height="30" />&nbsp;{name}&nbsp;发布于{date}&nbsp;65342 次浏览&nbsp;
+     <img src="{head}" width="30" height="30" />&nbsp;{name}&nbsp;发布于{date}&nbsp;{pv} 次浏览&nbsp;
      {#tag1}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag1}
      {#user}
      <div class="navbar-right small-font">

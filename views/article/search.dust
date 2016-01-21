@@ -1,0 +1,20 @@
+{>"/layout" /}
+
+        {<body}
+<div class="container c-top">
+<div class="panel panel-default">
+    <div class="panel-heading"><span class="label label-success">所有 {keywords} 文章</span></div>
+    <table class="table">
+        <tbody>
+        {#list}
+        <tr>
+            <td><img src="{head}" width="30" height="30" /><a href="/view/{_id}" class="article-title">{title}</a><span class="badge">{pv}</span></td>
+            <td class="col-tag">{#tag1}<a class="label label-info label-e" href="/tags/{.}">{.}</a>{/tag1}</td>
+            <td class="col-date">{date}</td>
+        </tr>
+        {/list}
+        </tbody>
+    </table>
+</div>
+</div>
+        {/body}
